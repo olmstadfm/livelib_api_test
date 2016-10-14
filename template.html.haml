@@ -1,0 +1,15 @@
+%html
+  %head
+    %title= "Livelib - Диалог с #{participant}"
+    %meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    %meta{name='generator' content="livelib_message_dumper"}
+    %meta{name='generated_at' content="#{last_update}"}
+    
+  %body
+    - for message in message_list
+      .message
+        %span.message_id= message['id']
+        %span.participant= message['reader']
+        %span.date= message['date']
+        .content
+          = message['message']

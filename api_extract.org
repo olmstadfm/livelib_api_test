@@ -1,0 +1,311 @@
+* Authorization
+
+./ru/livelib/client/Authorization.java:470:
+      Authorization.this.result = PostRequest.PostData("/login", 
+      "login=" +  Authorization.this.login +
+      "&pass=" + Authorization.this.encrypted_pass + 
+      "&key=1" + Authorization.this.challenge_param + Authorization.this.reg_stat_str, Authorization.login_params);
+
+./ru/livelib/client/Authorization.java:524:
+      Authorization.this.result = PostRequest.PostData("/register", "email=" + Authorization.this.email + Authorization.this.challenge_param + Authorization.this.reg_stat_str, Authorization.login_params);
+
+./ru/livelib/client/Authorization.java:596:
+      Authorization.this.result = PostRequest.PostData("/ulogin", "token="
++ Authorization.this.encrypted_token + Authorization.this.challenge_param + Authorization.this.reg_stat_str, Authorization.login_params);
+
+* CodeReader
+
+./ru/livelib/client/CodeReader.java:92:
+  String str1 = GetRequest.Get("/book?id=" + paramArrayOfString[0]);
+
+./ru/livelib/client/CodeListReader.java:84:
+  CodeListReader.this.result = PostRequest.PostData("/savescanned", " status=1&isbns=" + CodeListReader.this.isbn_list, null);
+
+* ConversationsPage
+
+./ru/livelib/client/Activities/ConversationsPage.java:80:
+  ConversationsPage.this.result = GetRequest.GetData(ConversationsPage.this.params, "/conversationlist", Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ConversationsPage.java:169:
+  ConversationsPage.this.result = GetRequest.GetData(ConversationsPage.this.params, "/conversationlist&start=" + ConversationsPage.this.current_page, Boolean.valueOf(true))
+;
+
+* BookPage
+
+./ru/livelib/client/Activities/BookPage.java:708:
+  BookPage.this.result = PostRequest.PostData("/deleteuserbook"
+, "book_id=" + BookPage.this.book_id, new String[] { "status" });
+
+./ru/livelib/client/Activities/BookPage.java:1632:
+  BookPage.this.main_result = PostRequest.PostData("/saveuserbook", "edition_id=" + BookPage.this.book_id + "&status_id=" + BookPage.this.status + "&rating=" + BookPage.this.ub_rating + "&own=" + BookPage.this.own + "&day=" + BookPage.this.day + "&month=" + BookPage.this.month + "&year=" + BookPage.this.year + "&tags=" + BookPage.this.my_tags + "&is_favorite=" + BookPage.this.is_favorite, new String[] { "book_status" });
+
+* StoryEditPage
+
+./ru/livelib/client/Activities/StoryEditPage.java:86:
+  StoryEditPage.this.main_result = GetRequest.GetData(StoryEditPage.this.params, str, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/StoryEditPage.java:147:
+  StoryEditPage.this.main_result = PostRequest.PostData("/
+savestory", "edition_id=" + StoryEditPage.this.book_id + "&story=" + StoryEditPage.this.story_text + "&access=" + StoryEditPage.this.access, new String[] { "status" });
+
+* SplashPage
+
+./ru/livelib/client/Activities/SplashPage.java:40:
+  SplashPage.this.result = GetRequest.GetData(SplashPage.this.
+list_params, "/portalext&books_count=10", Boolean.valueOf(false));
+
+* MessagePage
+
+./ru/livelib/client/Activities/MessagePage.java:112:
+  MessagePage.this.result = GetRequest.GetData(MessagePage.this.request_params, str, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/MessagePage.java:197:
+  MessagePage.this.result = GetRequest.GetData(MessagePage.this.request_params, "/messagelist?recipient=" + MessagePage.this.recipient + "&start=" + MessagePage.this.current_page
+, Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/MessagePage.java:261:
+  MessagePage.this.result = PostRequest.PostData("/sendmessage", "login=" + MessagePage.this.recipient + "&text=" + MessagePage.this.message, MessagePage.data_params);
+
+./ru/livelib/client/Activities/MessagePage.java:311:
+  MessagePage.this.tmp_result = GetRequest.GetData(this.mark_params, "/markmessagesasread?ids=" + this.mes_ids, Boolean.valueOf(false));
+
+* PostListPage
+
+./ru/livelib/client/Activities/PostListPage.java:90:
+  PostListPage.this.result = GetRequest.GetData(PostListPage.this.params, PostListPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/PostListPage.java:166:
+  PostListPage.this.result = GetRequest.GetData(PostListPage.this.params, PostListPage.this.url + "&start=" + PostListPage.this.current_page, Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/PostPage.java:179:
+  PostPage.this.main_result = GetRequest.GetData(PostPage.this.
+params, PostPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/PostPage.java:192:
+  PostPage.this.com_result = GetRequest.GetData(PostPage.this.com_params, PostPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/PostPage.java:332:
+  PostPage.this.com_result = GetRequest.GetData(PostPage.this.com_params, "/comments?object_alias=post&object_id=" + PostPage.this.post_id + "&start=" + PostPage.this.current_page,
+Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/PostPage.java:391:
+  PostPage.this.send_result = PostRequest.PostData("/savecomment", "object_alias=post&object_id=" + PostPage.this.post_id + "&comment=" + PostPage.this.comment_text + "&parent_id="
++ PostPage.this.parent_id, PostPage.this.data_params);
+
+* ChallengeListPage
+
+./ru/livelib/client/Activities/ChallengeListPage.java:121:
+  ChallengeListPage.this.result = GetRequest.GetData(ChallengeListPage.this.params, ChallengeListPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ChallengeListPage.java:198:
+  ChallengeListPage.this.result = GetRequest.GetData(ChallengeListPage.this.params, ChallengeListPage.this.url + "&start=" + ChallengeListPage.this.current_page, Boolean.valueOf(true));
+
+* QuotePage
+
+./ru/livelib/client/Activities/QuotePage.java:159:
+  String str1 = GetRequest.Get("/quote?quote_id=" + QuotePage.
+this.quote_id + "&is_userquote=" + QuotePage.this.is_userquote);
+
+./ru/livelib/client/Activities/QuotePage.java:234:
+  QuotePage.this.main_result = GetRequest.GetData(QuotePage.this.params, str, Boolean.valueOf(false));
+
+* ForumPage
+
+./ru/livelib/client/Activities/ForumPage.java:69:
+  ForumPage.this.result = GetRequest.GetData(ForumPage.this.params, "/forum", Boolean.valueOf(false));
+
+* SelectionListPage
+
+./ru/livelib/client/Activities/SelectionListPage.java:88:
+  SelectionListPage.this.result = GetRequest.GetData(SelectionListPage.this.params, SelectionListPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/SelectionListPage.java:164:
+  SelectionListPage.this.result = GetRequest.GetData(SelectionListPage.this.params, SelectionListPage.this.url + "&start=" + SelectionListPage.this.current_page, Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/TopEventListPage.java:86:
+  TopEventListPage.this.result = GetRequest.GetData(TopEventListPage.this.params, "/topeventlist", Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/TopEventListPage.java:214:
+  TopEventListPage.this.result = GetRequest.GetData(TopEventListPage.this.params, "/topeventlist&start=" + TopEventListPage.this.current_page, Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/AuthorListPage.java:87:
+  AuthorListPage.this.result = GetRequest.GetData(AuthorListPage.this.request_params, AuthorListPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/AuthorListPage.java:180:
+  AuthorListPage.this.result = GetRequest.GetData(AuthorListPage.this.request_params, AuthorListPage.this.url + "&start=" + AuthorListPage.this.current_page, Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/FirstPage.java:263:
+  FirstPage.this.result = GetRequest.GetData(FirstPage.this.list_params, FirstPage.this.url_str, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/FriendListPage.java:75:
+  FriendListPage.this.result = GetRequest.GetData(FriendListPage.this.params, str, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/BookListPage.java:172:
+  BookListPage.this.result = GetRequest.GetData(BookListPage.this.params, BookListPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/BookListPage.java:266:
+  BookListPage.this.result = GetRequest.GetData(BookListPage.this.params, BookListPage.this.url + "&start=" + BookListPage.this.current_page, Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/ReviewPage.java:327:
+  String str1 = GetRequest.Get("/review?review_id=" + ReviewPage.this.review_id);
+
+./ru/livelib/client/Activities/ReviewPage.java:393:
+  ReviewPage.this.main_result = GetRequest.GetData(ReviewPage
+.this.params, ReviewPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ReviewPage.java:406:
+  ReviewPage.this.com_result = GetRequest.GetData(ReviewPage.this.com_params, ReviewPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ReviewPage.java:1050:
+  ReviewPage.this.com_result = GetRequest.GetData(ReviewPage
+.this.com_params, "/comments?object_alias=review&object_id=" + ReviewPage.this.review_id + "&start=" + ReviewPage.this
+.current_page, Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/ReviewPage.java:1111:
+  PostRequest.PostData("/savecomment", "object_alias=review&
+object_id=" + ReviewPage.this.review_id + "&comment=" + ReviewPage.this.comment_text + "&parent_id=" + ReviewPage.this
+.parent_id, ReviewPage.this.data_params);
+
+./ru/livelib/client/Activities/MainActivity.java:1192:
+  String str = GetRequest.Get("/newmessages");
+
+./ru/livelib/client/Activities/MainActivity.java:1241:
+  MainActivity.this.menu_res = GetRequest.GetData(MainActivity.this.menu_params, "/usermenuinfo", Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/MainActivity.java:1286:
+  return Integer.valueOf(PostRequest.PostData(paramArrayOfPostAsyncTaskParams[0].url, paramArrayOfPostAsyncTaskParams[0].query, paramArrayOfPostAsyncTaskParams[0].params));
+
+./ru/livelib/client/Activities/UserBookListPage.java:237:
+  UserBookListPage.this.result = GetRequest.GetData(UserBookListPage.this.params, UserBookListPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/UserBookListPage.java:383:
+  UserBookListPage.this.result = GetRequest.GetData(UserBookListPage.this.params, UserBookListPage.this.url + "&start=" + UserBookListPage.this.current_page, Boolean.valueOf
+(true));
+
+./ru/livelib/client/Activities/UserBookListPage.java:442:
+  UserBookListPage.this.result = PostRequest.PostData("
+/deleteuserbook", "book_id=" + UserBookListPage.this.book_id, UserBookListPage.this.resp_params);
+
+./ru/livelib/client/Activities/QuoteListPage.java:382:
+  Integer localInteger = Integer.valueOf(PostRequest.PostData("/managefavorites", "object_id=" + this.obj_id + "&object_alias=" + "quote" + "&fav_action=" + this.is_fav, new
+String[0]));
+
+./ru/livelib/client/Activities/QuoteListPage.java:416:
+  QuoteListPage.this.result = GetRequest.GetData(QuoteListPage.this.params, QuoteListPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/QuoteListPage.java:500:
+  QuoteListPage.this.result = GetRequest.GetData(QuoteListPage.this.params, QuoteListPage.this.url + "&start=" + QuoteListPage.this.current_page, Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/QuoteListPage.java:592:
+  Integer localInteger = Integer.valueOf(PostRequest.PostData("/vote", "id=" + this.obj_id + "&alias=quote&vote=1", new String[0]));
+
+./ru/livelib/client/Activities/BookAddPage.java:194:
+  BookAddPage.this.main_result = GetRequest.GetData(BookAddPage.this.params, str, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/BookAddPage.java:372:
+  BookAddPage.this.main_result = PostRequest.PostData("/saveuserbook", "edition_id=" + BookAddPage.this.book_id + "&status_id=" + BookAddPage.this.status + "&rating=" + BookAddPage.this.ub_rating + "&own=" + BookAddPage.this.own + "&day=" + BookAddPage.this.day + "&month=" + BookAddPage.this.month + "&year=" + BookAddPage.this.year + "&tags=" + BookAddPage.this.my_tags + "&is_favorite=" + BookAddPage.this.is_favorite, new String[] { "status" });
+
+./ru/livelib/client/Activities/ChallengePage.java:192:
+  ChallengePage.this.result = GetRequest.GetData(ChallengePage.this.params, "/bookchallenge?page=index&year=2015", Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ChallengePage.java:207:
+  ChallengePage.this.books_result = GetRequest.GetData(ChallengePage.this.books_params, "/bookchallenge?page=books&year=2015&count=25", Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ChallengePage.java:383:
+  ChallengePage.this.result = PostRequest.PostData("/bookchallengesave", "&delete=" + ChallengePage.this.delete + "&count_books=" + ChallengePage.this.count_books, new String[]
+  { "status", "count_read_books" });
+
+./ru/livelib/client/Activities/ReviewEditPage.java:131:
+  for (ReviewEditPage.this.main_result = GetRequest.GetData(ReviewEditPage.this.edit_params, str, Boolean.valueOf(false)); ; ReviewEditPage.this.main_result = GetRequest.GetData(ReviewEditPage.this.params, str, Boolean.valueOf(false)))
+
+./ru/livelib/client/Activities/ReviewEditPage.java:276:
+  ReviewEditPage.this.main_result = PostRequest.PostData(
+  "/savereview", "review_id=" + ReviewEditPage.this.review_id + "&edition_id=" + ReviewEditPage.this.book_id + "&review=
+" + URLEncoder.encode(ReviewEditPage.this.review_text, "UTF-8") + "&access=" + ReviewEditPage.this.access, new String[
+] { "status" });
+
+./ru/livelib/client/Activities/StoryPage.java:187:
+  StoryPage.this.main_result = GetRequest.GetData(StoryPage.this.params, StoryPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/StoryPage.java:200:
+  StoryPage.this.com_result = GetRequest.GetData(StoryPage
+.this.com_params, StoryPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/StoryPage.java:358:
+  StoryPage.this.com_result = GetRequest.GetData(StoryPage.this.com_params, "/comments?object_alias=story&object_id=" + StoryPage.this.story_id + "&start=" + StoryPage.this.current
+_page, Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/StoryPage.java:417:
+  StoryPage.this.send_result = PostRequest.PostData("/savecomment", "object_alias=story&object_id=" + StoryPage.this.story_id + "&comment=" + StoryPage.this.comment_text + "&parent
+_id=" + StoryPage.this.parent_id, StoryPage.this.data_params);
+
+./ru/livelib/client/Activities/QuoteEditPage.java:137:
+  for (QuoteEditPage.this.main_result = GetRequest.GetData
+(QuoteEditPage.this.edit_params, str, Boolean.valueOf(false)); ; QuoteEditPage.this.main_result = GetRequest.GetData(QuoteEditPage.this.params, str, Boolean.valueOf(false)))
+
+./ru/livelib/client/Activities/QuoteEditPage.java:282:
+  QuoteEditPage.this.main_result = PostRequest.PostData(
+"/savequote", (String)localObject, new String[] { "status" });
+
+./ru/livelib/client/Activities/AuthorPage.java:183:
+  AuthorPage.this.result = GetRequest.GetData(AuthorPage.this
+.books_params, AuthorPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/AuthorPage.java:194:
+  AuthorPage.this.result = GetRequest.GetData(AuthorPage.this.reviews_params, AuthorPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/AuthorPage.java:205:
+  AuthorPage.this.result = GetRequest.GetData(AuthorPage.
+this.quotes_params, AuthorPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/AuthorPage.java:217:
+  AuthorPage.this.result = GetRequest.GetData(AuthorPage.this.params, AuthorPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ProfilePage.java:370:
+  ProfilePage.this.result = GetRequest.GetData(ProfilePage.this.books_params, ProfilePage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ProfilePage.java:382:
+  ProfilePage.this.result = GetRequest.GetData(ProfilePage
+.this.books_params, ProfilePage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ProfilePage.java:393:
+  ProfilePage.this.result = GetRequest.GetData(ProfilePage.this.books_params, ProfilePage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ProfilePage.java:404:
+  ProfilePage.this.result = GetRequest.GetData(ProfilePage.this.books_params, ProfilePage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ProfilePage.java:415:
+  ProfilePage.this.result = GetRequest.GetData(ProfilePage.this.books_params, ProfilePage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ProfilePage.java:425:
+  ProfilePage.this.result = GetRequest.GetData(ProfilePage.this.badges_params, ProfilePage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ProfilePage.java:436:
+  ProfilePage.this.main_result = GetRequest.GetData(ProfilePage.this.params, ProfilePage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/StoryListPage.java:198:
+  StoryListPage.this.result = GetRequest.GetData(StoryListPage.this.params, StoryListPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/StoryListPage.java:285:
+  StoryListPage.this.result = GetRequest.GetData(StoryListPage.this.params, StoryListPage.this.url + "&start=" + StoryListPage.this.current_page, Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/StoryListPage.java:377:
+  Integer localInteger = Integer.valueOf(PostRequest.PostData("/vote", "id=" + this.obj_id + "&alias=story&vote=1", new String[0]));
+
+./ru/livelib/client/Activities/Account.java:73:
+  Account.this.result = PostRequest.PostData("/login", "login=" + Account.this.login + "&pass=" + Account.this.encrypted_pass + "&key=1", Account.data_params);
+
+./ru/livelib/client/Activities/ReviewListPage.java:336:
+  Integer localInteger = Integer.valueOf(PostRequest.PostData("/managefavorites", "object_id=" + this.obj_id + "&object_alias=" + "review" + "&fav_action=" + this.is_fav, new String[0]));
+
+./ru/livelib/client/Activities/ReviewListPage.java:370:
+  ReviewListPage.this.result = GetRequest.GetData(ReviewListPage.this.params, ReviewListPage.this.url, Boolean.valueOf(false));
+
+./ru/livelib/client/Activities/ReviewListPage.java:454:
+  ReviewListPage.this.result = GetRequest.GetData(ReviewListPage.this.params, ReviewListPage.this.url + "&start=" + ReviewListPage.this.current_page, Boolean.valueOf(true));
+
+./ru/livelib/client/Activities/ReviewListPage.java:543:
+  Integer localInteger = Integer.valueOf(PostRequest.PostData("/vote", "id=" + this.obj_id + "&alias=review&vote=1", new String[0]));
+
+./ru/livelib/client/Activities/GenreListPage.java:96:
+  GenreListPage.this.result = GetRequest.GetData(GenreListPage.this.params, "/genres", Boolean.valueOf(false));

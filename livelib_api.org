@@ -1,0 +1,136 @@
+#+TITLE: LiveLib API
+
+Фильтр для wireshark: ip.dst == 213.239.199.231
+
+* User menu info
+
+  Отдает базовую информацию о пользователе. Видимо, это то, что
+  показывается в заголовке главного меню. 
+
+  Пример запроса:
+  
+  : GET /api/usermenuinfo&andyll=and7mpp4ss&session_id=965d3391e457ddcabf9c006f942c49c1
+
+  Пример ответа:
+
+  : {
+  :   "data": [
+  :     {
+  :       "count_conversations": "1",
+  :       "reader_status": "\u0427\u0438\u0442\u0430\u0442\u0435\u043b\u044c",
+  :       "reviews": 1,
+  :       "read_books": "144"
+  :     }
+  :   ]
+  : }
+
+* Messages
+
+** New messages
+
+   Количество новых сообщений.
+
+   Пример запроса:
+
+   : GET /api/newmessages&andyll=and7mpp4ss&session_id=965d3391e457ddcabf9c006f942c49c1
+
+   Пример ответа:
+
+   : {
+   :   "count": "1",
+   :   "data": [
+   :     {
+   :       "conversations_count": "1",
+   :       "new_messages_count": "1"
+   :     }
+   :   ]
+   : }
+
+** Conversation list
+
+   Список всех пользователей с которыми велась переписка. 
+
+   Пример запроса:
+
+   : GET /api/conversationlist&andyll=and7mpp4ss&session_id=965d3391e457ddcabf9c006f942c49c1
+
+   Пример ответа:
+
+   : {
+   :   "count": "1",
+   :   "data": [
+   :     {
+   :       "status": "new",
+   :       "last_message": "Hello there....",
+   :       "date": "\u0441\u0435\u0433\u043e\u0434\u043d\u044f, 23:41",
+   :       "last_message_from_me": 0,
+   :       "pic_url": "http:\/\/i.livelib.ru\/userpic\/teksisto\/r\/261f\/userpic.jpg",
+   :       "reader": "teksisto"
+   :     }
+   :   ]
+   : }
+
+** Message list
+
+   Сообщения от конкретного пользователя. Показывает в интерфейсе
+   диалог с конкретным пользователем.
+
+   Параметры: recipient={username}.
+
+   : GET /api/messagelist?recipient=teksisto&andyll=and7mpp4ss&session_id=965d3391e457ddcabf9c006f942c49c1
+
+   : {
+   :   "count": "1",
+   :   "data": [
+   :     {
+   :       "status_code": "0",
+   :       "message": "Hello there.",
+   :       "date": "\u0441\u0435\u0433\u043e\u0434\u043d\u044f, 23:41",
+   :       "reader": "teksisto",
+   :       "id": "2142998" # <= id сообщения, которое используется для манипуляции
+   :     }
+   :   ]
+   : }
+
+** Mark messages as read
+
+   Помечает соощение как прочитанное. Автоматически вызывается после ~messagelist~.
+
+   Параметры: ids={~message_ids~ через запятую} из ~messagelist~.
+
+   Пример запроса:
+
+   : GET /api/markmessagesasread?ids=2142998&andyll=and7mpp4ss&session_id=965d3391e457ddcabf9c006f942c49c1
+
+   Пример запроса с несколькими ~message_id~:
+
+   : GET /api/markmessagesasread?ids=2142998,2143030&andyll=and7mpp4ss&session_id=965d3391e457ddcabf9c006f942c49c1
+
+   Пример ответа:
+
+   : {
+   :   "status": "okay",
+   :   "data": [
+   :     {
+   :       "mark_messages_status": "okay"
+   :     }
+   :   ]
+   : }
+   : 
+
+** Send message
+
+   Отослать сообщение пользователю. Отсылает обычную форму
+   post'ом. Параметры отсылаются в виде ~x-www-form-urlencoded~.
+
+   Параметры:
+   - login
+   - text 
+
+   : POST /api/sendmessage&andyll=and7mpp4ss&session_id=965d3391e457ddcabf9c006f942c49c1
+   : Content-Type: application/x-www-form-urlencoded
+   : login=teksisto&text=сам такой
+
+   Пример ответа: 
+
+   : {"status":1}
